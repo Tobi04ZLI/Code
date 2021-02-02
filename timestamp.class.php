@@ -1,36 +1,34 @@
 <?php
 
-$i = 0;
-
-if($i < 1) {
-
-$start = date("H:i:s");
-$project = readline("Geben Sie ihre Tätikeit ein: ");
-
 class Stempel 
 {
+
     public $start;
     public $project;
 
-    public function __construct($firstname, $name)
+    public function __construct($firstname, $name, $start, $project)
     {
         $this->firstname = $firstname;
         $this->name = $name;
+        $time = $this->timeone($start, $project);
     }
 
 
     public function timeone($start, $project)
     {
+        $start = date("H:i:s");
+        $project = readline("Geben Sie ihre Tätikeit ein: ");
+
         $this->start = $start;
         $this->project = $project;
         
         $fullname = $this->firstname . $this->name;
         $arraytwo[] = array('start' => $this->start, 'project'=> $this->project);
         // encode array to json
-        $jsontwo = json_encode(array('time' . $this->time => $arraytwo));
+        $jsontwo = json_encode(array('timestart' . $this->timestart => $arraytwo));
         //write json to file
 
-        $myfiletwo = fopen("$fullname.json", "a+") or die("Unable to open file!");
+        $myfiletwo = fopen("./Json-Files/$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfiletwo, $jsontwo);
         fclose($myfiletwo);
         $lul++;
@@ -50,15 +48,12 @@ class Stempel
     }*/
 }
 
-$test2 = new Stempel($firstname, $name);     
+/*$test2 = new Stempel($firstname, $name);     
 $test2->timeone($start, $project);      
-var_dump($test2);
+var_dump($test2);*/
 /*$test3->work();  
 var_dump($test3);*/ 
 
-
-
-} else {
 
     $end = date("H:i:s");
 
@@ -66,10 +61,11 @@ var_dump($test3);*/
 
     public $end;
 
-    public function __construct($firstname, $name)
+    public function __construct($firstname, $name, $end)
     {
         $this->firstname = $firstname;
         $this->name = $name;
+        $time = $this->timetwo($end);
     }
 
     public function timetwo($end)
@@ -79,17 +75,15 @@ var_dump($test3);*/
         $fullname = $this->firstname . $this->name;
         $arraythree[] = array('end' => $this->end);
         // encode array to json
-        $jsonthree = json_encode(array('time' . $this->end => $arraythree));
+        $jsonthree = json_encode(array('timeend' . $this->timeend => $arraythree));
         //write json to file
 
-        $myfilethree = fopen("$fullname.json", "a+") or die("Unable to open file!");
+        $myfilethree = fopen("./Json-Files/$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfilethree, $jsonthree);
         fclose($myfilethree);
     }
 }
 
-$test3 = new Stempel2($firstname, $name);     
+/*$test3 = new Stempel2($firstname, $name);     
 $test3->timetwo($end);                            
-var_dump($test3); 
-
-}
+var_dump($test3);*/ 

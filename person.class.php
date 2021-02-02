@@ -37,7 +37,7 @@ class Person
         $json = json_encode(array('user' . $this->firstname => $array));
         //write json to file
 
-        $myfile = fopen("name.json", "a+") or die("Unable to open file!");
+        $myfile = fopen("./Json-Files/name.json", "a+") or die("Unable to open file!");
         fwrite($myfile, $json);
         fclose($myfile);
         
@@ -92,10 +92,11 @@ var_dump($test1);                                   //gibt die Sachen von insert
 
 require_once "timestamp.class.php";
 
-$o = 0;
+$o = 1;
 if($o < 1){
 
-$timetime = new Stempel($firstname, $name);
+$timetime = new Stempel($firstname, $name, $start, $project);
 } else {
-$timetimetime = new Stempel2($firstname, $name);
+$timetimetime = new Stempel2($firstname, $name, $end);
+
 }
