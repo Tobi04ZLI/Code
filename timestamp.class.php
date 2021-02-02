@@ -1,6 +1,6 @@
 <?php
 
-$i = 1;
+$i = 0;
 
 if($i < 1) {
 
@@ -66,14 +66,17 @@ var_dump($test3);*/
 
     public $end;
 
-    public function __construct($end)
+    public function __construct($firstname, $name)
     {
-        $this->end = $end;
+        $this->firstname = $firstname;
+        $this->name = $name;
     }
 
-    public function timetwo()
+    public function timetwo($end)
     {
+        $this->end = $end;
 
+        $fullname = $this->firstname . $this->name;
         $arraythree[] = array('end' => $this->end);
         // encode array to json
         $jsonthree = json_encode(array('time' . $this->end => $arraythree));
@@ -85,8 +88,8 @@ var_dump($test3);*/
     }
 }
 
-$test3 = new Stempel2($end);     
-$test3->timetwo();                            
+$test3 = new Stempel2($firstname, $name);     
+$test3->timetwo($end);                            
 var_dump($test3); 
 
 }

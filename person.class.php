@@ -92,4 +92,10 @@ var_dump($test1);                                   //gibt die Sachen von insert
 
 require_once "timestamp.class.php";
 
+$o = 0;
+if($o < 1){
+
 $timetime = new Stempel($firstname, $name);
+} else {
+$timetimetime = new Stempel2($firstname, $name);
+}
