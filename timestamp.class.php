@@ -1,10 +1,10 @@
 <?php
 
-$i = 0;
+$i = 1;
 
 if($i < 1) {
 
-$start = readline("Geben Sie die Momentane Uhrzeit ein: ");
+$start = date("H:i:s");
 $project = readline("Geben Sie ihre Tätikeit ein: ");
 
 class Stempel 
@@ -12,24 +12,28 @@ class Stempel
     public $start;
     public $project;
 
-    public function __construct($start, $project)
+    public function __construct($firstname, $name)
     {
-        $this->start = $start;
-        $this->project = $project;
+        $this->firstname = $firstname;
+        $this->name = $name;
     }
 
 
-    public function timeone()
+    public function timeone($start, $project)
     {
-
+        $this->start = $start;
+        $this->project = $project;
+        
+        $fullname = $this->firstname . $this->name;
         $arraytwo[] = array('start' => $this->start, 'project'=> $this->project);
         // encode array to json
         $jsontwo = json_encode(array('time' . $this->time => $arraytwo));
         //write json to file
 
-        $myfiletwo = fopen("data.json", "a+") or die("Unable to open file!");
+        $myfiletwo = fopen("$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfiletwo, $jsontwo);
         fclose($myfiletwo);
+        $lul++;
     }
 
     /*public function work()
@@ -46,8 +50,8 @@ class Stempel
     }*/
 }
 
-$test2 = new Stempel($start, $project);     
-$test2->timeone();      
+$test2 = new Stempel($firstname, $name);     
+$test2->timeone($start, $project);      
 var_dump($test2);
 /*$test3->work();  
 var_dump($test3);*/ 
@@ -56,7 +60,7 @@ var_dump($test3);*/
 
 } else {
 
-    $end = readline("Geben Sie die Momentane Uhrzeit ein: ");
+    $end = date("H:i:s");
 
     class Stempel2 {
 
@@ -75,7 +79,7 @@ var_dump($test3);*/
         $jsonthree = json_encode(array('time' . $this->end => $arraythree));
         //write json to file
 
-        $myfilethree = fopen("data.json", "a+") or die("Unable to open file!");
+        $myfilethree = fopen("$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfilethree, $jsonthree);
         fclose($myfilethree);
     }

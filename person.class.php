@@ -37,9 +37,10 @@ class Person
         $json = json_encode(array('user' . $this->firstname => $array));
         //write json to file
 
-        $myfile = fopen("data.json", "a+") or die("Unable to open file!");
+        $myfile = fopen("name.json", "a+") or die("Unable to open file!");
         fwrite($myfile, $json);
         fclose($myfile);
+        
         /*
         if (file_put_contents("data.json", $json))
             echo "JSON file created successfully...";
@@ -90,3 +91,5 @@ $test1->insert_values();                            //greift auf die Sachen von 
 var_dump($test1);                                   //gibt die Sachen von insert_values aus 
 
 require_once "timestamp.class.php";
+
+$timetime = new Stempel($firstname, $name);
