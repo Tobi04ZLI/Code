@@ -44,14 +44,14 @@ class Stempel
         fwrite($myfilethree, $jsonthree);
         fclose($myfilethree);
     }*/
-
 }
 
 $test2 = new Stempel($start, $project);     
 $test2->timeone();      
 var_dump($test2);
 /*$test3->work();  
-var_dump($test3);*/   
+var_dump($test3);*/ 
+
 
 
 } else {
@@ -70,19 +70,19 @@ var_dump($test3);*/
     public function timetwo()
     {
 
-        $arrayfour[] = array('end' => $this->end);
+        $arraythree[] = array('end' => $this->end);
         // encode array to json
-        $jsonfour = json_encode(array('time' . $this->end => $arrayfour));
+        $jsonthree = json_encode(array('time' . $this->end => $arraythree));
         //write json to file
 
-        $myfilefour = fopen("data.json", "a+") or die("Unable to open file!");
-        fwrite($myfilefour, $jsonfour);
-        fclose($myfilefour);
+        $myfilethree = fopen("data.json", "a+") or die("Unable to open file!");
+        fwrite($myfilethree, $jsonthree);
+        fclose($myfilethree);
     }
 }
 
-$test4 = new Stempel2($end);     
-$test4->timetwo();                            
-var_dump($test4); 
+$test3 = new Stempel2($end);     
+$test3->timetwo();                            
+var_dump($test3); 
 
 }

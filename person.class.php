@@ -18,7 +18,7 @@ class Person
      * @param  mixed $name
      * @return void
      */
-    public function __construct($firstname, $name)
+    public function __construct    ($firstname, $name)
     {
         $this->firstname = $firstname;
         $this->name = $name;
@@ -48,7 +48,7 @@ class Person
         */
         // data.json
 
-        /*$test = file_get_contents("data.json");           //eigener Versuch Daten aus JSON Datei auszulesen
+        /*$test = file_get_contents("data.json");           //eigener Versuch Daten aus JSON Datei auszulesen 
     $arrayy = json_decode($test, true);
     var_dump($arrayy);*/
     }
@@ -58,7 +58,7 @@ class Person
     /*public $firstname = array();  
     public $name = array();
 
-    function __construct($firstname, $name) {
+    function __construct($firstname, $name) { 
         $this->firstname = $firstname;
         $this->name = $name;
 }
@@ -85,9 +85,8 @@ class Person
     /*$array = json_decode(file_get_contents("data.json"), true);
     print_r($array);*/
 }
-
 $test1 = new Person($firstname, $name);         //nimmt die Variabeln $firstname und $name aus der Klasse Person
 $test1->insert_values();                            //greift auf die Sachen von der Function insert_values zu   
-var_dump($test1);                                   //gibt die Sachen von insert_values aus
+var_dump($test1);                                   //gibt die Sachen von insert_values aus 
 
 require_once "timestamp.class.php";
