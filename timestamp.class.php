@@ -23,7 +23,21 @@ class Stempel
         $this->project = $project;
         
         $fullname = $this->firstname . $this->name;
-        $arraytwo[] = array('start' => $this->start, 'project'=> $this->project);
+
+        $json_already = file_get_contents("./Json-Files/$fullname.json");
+        $json = json_decode($json_already, true);
+        if(!empty($this->firstname) && !empty($this->name)){
+            $array = array(
+                'start' => $this->start,
+                'project' => $this->project
+                );
+                var_dump ($array);
+                $json[] = $array;
+                $json_encoded = json_encode($json);
+                file_put_contents("./Json-Files/$fullname.json", $json_encoded);
+        }
+
+        /*$arraytwo[] = array('start' => $this->start, 'project'=> $this->project);
         // encode array to json
         $jsontwo = json_encode(array('timestart' . $this->timestart => $arraytwo));
         //write json to file
@@ -31,7 +45,7 @@ class Stempel
         $myfiletwo = fopen("./Json-Files/$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfiletwo, $jsontwo);
         fclose($myfiletwo);
-        $lul++;
+        $lul++;*/
     }
 
     /*public function work()
@@ -73,14 +87,27 @@ var_dump($test3);*/
         $this->end = $end;
 
         $fullname = $this->firstname . $this->name;
-        $arraythree[] = array('end' => $this->end);
+        
+        $json_already = file_get_contents("./Json-Files/$fullname.json");
+        $json = json_decode($json_already, true);
+        if(!empty($this->firstname) && !empty($this->name)){
+            $array = array(
+                'ends' => $this->end
+                );
+                var_dump ($array);
+                $json[] = $array;
+                $json_encoded = json_encode($json);
+                file_put_contents("./Json-Files/$fullname.json", $json_encoded);
+        }
+
+        /*$arraythree[] = array('end' => $this->end);
         // encode array to json
         $jsonthree = json_encode(array('timeend' . $this->timeend => $arraythree));
         //write json to file
 
         $myfilethree = fopen("./Json-Files/$fullname.json", "a+") or die("Unable to open file!");
         fwrite($myfilethree, $jsonthree);
-        fclose($myfilethree);
+        fclose($myfilethree);*/
     }
 }
 

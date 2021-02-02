@@ -32,14 +32,27 @@ class Person
     public function insert_values()
     {
 
-        $array[] = array('firstname' => $this->firstname, 'name' => $this->name);
+        $json_already = file_get_contents("./Json-Files/name.json");
+        $json = json_decode($json_already, true);
+        if(!empty($this->firstname) && !empty($this->name)){
+            $array = array(
+                'firstname' => $this->firstname,
+                'name' => $this->name
+                );
+                var_dump ($array);
+                $json[] = $array;
+                $json_encoded = json_encode($json);
+                file_put_contents("./Json-Files/name.json", $json_encoded);
+        }
+
+        /*$array[] = array('firstname' => $this->firstname, 'name' => $this->name);
         // encode array to json
-        $json = json_encode(array('user' . $this->firstname => $array));
+        $json = json_encode(array('user' . $this->firstname => $array));                    //Der $this->firstname wird zum Username (z.B. userMaurin)
         //write json to file
 
         $myfile = fopen("./Json-Files/name.json", "a+") or die("Unable to open file!");
         fwrite($myfile, $json);
-        fclose($myfile);
+        fclose($myfile);*/
         
         /*
         if (file_put_contents("data.json", $json))
