@@ -51,8 +51,7 @@ $test1->insert_values();                            //greift auf die Sachen von 
 require_once "timestamp.class.php";
 
 $fullname = $firstname . $name;
-$json_already = file_get_contents("./Json-Files/name.json");
-if(empty($json_already) || !file_exists("./Json-Files/$fullname.json")){
+if(empty("./Json-Files/$fullname.json") || !file_exists("./Json-Files/$fullname.json")){
     $timetime = new Stempel($firstname, $name, $start, $project);
 } else {
     $timetimetime = new Stempel2($firstname, $name, $end);
