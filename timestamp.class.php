@@ -30,7 +30,7 @@ class Stempel
         $time = $this->timeone($start, $project);
     }
 
-    
+        
     /**
      * timeone
      *
