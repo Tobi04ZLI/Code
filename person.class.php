@@ -41,13 +41,7 @@ class Person
                 );
                 $json[] = $array;
                 $json_encoded = json_encode($json);
-
-                if(empty($json_already)) {
-
                 file_put_contents("./Json-Files/name.json", $json_encoded);
-                } else {
-                    echo("else");
-                }
         }
     }
 }
@@ -56,10 +50,8 @@ $test1->insert_values();                            //greift auf die Sachen von 
 
 require_once "timestamp.class.php";
 
-$fullname = $firstname . $name;
-$json_already = file_get_contents("./Json-Files/$fullname.json");
-$check = json_decode($json_already, true);
-if(empty($check)){
+$check = 1;
+if($check == 0){
 $timetime = new Stempel($firstname, $name, $start, $project);
 } else {
 $timetimetime = new Stempel2($firstname, $name, $end);

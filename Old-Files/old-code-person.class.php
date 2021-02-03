@@ -45,6 +45,13 @@ class Person
                 file_put_contents("./Json-Files/name.json", $json_encoded);
         }
 
+        /*if(empty($json_already)) {
+
+            file_put_contents("./Json-Files/name.json", $json_encoded);
+            } else {
+                echo("else");
+            }*/
+
         /*$array[] = array('firstname' => $this->firstname, 'name' => $this->name);
         // encode array to json
         $json = json_encode(array('user' . $this->firstname => $array));                    //Der $this->firstname wird zum Username (z.B. userMaurin)

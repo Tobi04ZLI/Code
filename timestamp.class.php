@@ -47,10 +47,19 @@ class Stempel
         $this->project = $project;
         
         $fullname = $this->firstname . $this->name;
-
-        $json_already = file_get_contents("./Json-Files/$fullname.json");
-        $json = json_decode($json_already, true);
-        if(!empty($this->firstname) && !empty($this->name)){
+        if(!file_exists("./Json-Files/$fullname.json")){
+            if(!empty($this->firstname) && !empty($this->name)){
+                $array = array(
+                    'start' => $this->start,
+                    'project' => $this->project
+                    );
+                    $json_encoded = json_encode($array);
+                    file_put_contents("./Json-Files/$fullname.json", $json_encoded);
+            }
+        }else{
+            $json_already = file_get_contents("./Json-Files/$fullname.json");
+            $json = json_decode($json_already, true);
+            if(!empty($this->firstname) && !empty($this->name)){
             $array = array(
                 'start' => $this->start,
                 'project' => $this->project
@@ -58,6 +67,7 @@ class Stempel
                 $json[] = $array;
                 $json_encoded = json_encode($json);
                 file_put_contents("./Json-Files/$fullname.json", $json_encoded);
+        }
         }
     }
 }
